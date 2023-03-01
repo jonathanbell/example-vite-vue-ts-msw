@@ -13,10 +13,17 @@ export default {
   },
   methods: {
     async getDataFromApi() {
-      const rawResponse = await fetch("/api");
-      const json = await rawResponse.json();
+      try {
+        console.log("here i am");
+        const rawResponse = await fetch("/api");
+        console.log(rawResponse);
+        const json = await rawResponse.json();
 
-      console.log(json);
+        console.log(json);
+        this.apiResponse = json;
+      } catch (e) {
+        console.error("something bad happened...", e);
+      }
     },
   },
 };
